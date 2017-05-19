@@ -1,0 +1,12 @@
+第一步:
+node websocket-relay.js supersecret 8081 8082
+
+第二步:
+ffmpeg -f v4l2 -framerate 30 -video_size 320*240 -i /dev/video0 -f mpegts -codec:v mpeg1video -s 320*240 -b:v 1000k -bf 0 http://localhost:8081/supersecret
+
+
+第三步:
+http-server
+
+打开浏览器，注意不要设置代理，localhost:8080/stream_client.html 即可看到视频画面
+
